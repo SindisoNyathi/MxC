@@ -50,7 +50,7 @@ structured as follows:
 
 Set the working directory as the Mexico City folder 
 
-    (Session -> Set Working Directory -> Choose Directory ->)
+    (Session -> Set Working Directory -> Choose Directory -> Mexico City)
 
 Once this is done you have to install a few packages required by the MxC package. Do this by running the following commands.
 
