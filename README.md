@@ -89,6 +89,29 @@ Detailed explanation of the each functions is included in the functions as comme
 package and the mxc_master function is below.
 
 
+# Function Details
+
+Only one command is required to run the procedure. This is because the mxc_master() function calls several other  functions that conduct different parts of the analysis.The order in which the functions are called is as follows:
+
+    mxc_master()
+
+calls the following functions:
+    
+    mxc_untar()  #If the files are originally in .tar files, this function should untar them into .csv files.
+    mxc_rename() #This function renames the files form their original names to mxc run_1.csv to mxc run_N.csv 
+    mxc_mulruns() #Reads in the runs and conducts the Physical activity portion of the analysis.
+       [calls] mxc_indruns() #Called by mxc_mulruns(), this function recieves a single run and summarises the run, before 
+                       returning the summary file to mxc_mulruns for further processing.  
+       [calls] mxc_dealsd() #Reads in the standard deviaiton (SD) for a variable for each run and returns the overall                           standard deviation for the N runs. 
+    mxc_bmi() #Conducts the BMI portion of the analysis.
+       [calls] mxc_bmiind() #Averages the values from an individual file.
+       [calls] mxc_dealsdbmi() #Converts the SD from the individual N runs into a single SD across all the runs. 
+    mxc_bmitrends() #Plots the BMI trends graph. 
+    
+    
+
+
+
 
 References.
 
