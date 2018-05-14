@@ -106,7 +106,7 @@ calls the following functions:
     mxc_bmi() #Conducts the BMI portion of the analysis.
        [calls] mxc_bmiind() #Averages the values from an individual file.
        [calls] mxc_dealsdbmi() #Converts the SD from the individual N runs into a single SD across all the runs. 
-    mxc_bmitrends() #Plots the BMI trends graph. 
+    mxc_bmitrends() #Plots the BMI trends graph 
     
     
 
