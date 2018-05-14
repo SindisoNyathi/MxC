@@ -13,6 +13,7 @@
 #'@seealso {\code{\link{mxc_rename}}, \code{\link{mxc_master}}}
 #'@examples
 #'mxc_untar(home, "Baseline")
+#'mxc_untar(home, "Experiment1")
 #'@family
 #'
 #' @export
