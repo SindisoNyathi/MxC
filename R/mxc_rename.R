@@ -5,10 +5,10 @@
 #' @param  foldername String name of file with the runs eg. "Baseline"
 #' @return Nothing. Just files in Folder foldername renamed.
 #'
-#' @details Method: This function will take the names of all hte runs in foldername and rename them from whatever their original names are
-#' to mxxc_run1.csv, mxc_run2.csv, mxc_run3.csv, etc.
+#' @details Method: This function will take the names of all the runs in foldername and rename them from whatever their original names are
+#' to mxc_run1.csv, mxc_run2.csv, mxc_run3.csv, etc.
 #'
-#'@seealso {\code{\link{mxc_mulruns}}, \code{\link{mxc_master}}}
+#'@seealso {\code{\link{mxc_mulruns}}, \code{\link{mxc_master}}, \code{\link{mxc_untar}}}
 #'@examples
 #'mxc_rename(home, "Baseline")
 #'mxc_master(home, "Intervention 1")
@@ -25,17 +25,17 @@ mxc_rename <- function(home, foldername) {
   #Get a list of all files in the folder with a csv extension.
   file_list <- list.files(pattern = ".csv$")
 
-  #check to make sure there are actually csv files in the folder.
+  #check to make sure there are actually csv files in the folder. If not throw an error.
   if (length(file_list) == 0) {stop("Error: There are no csv files in this folder.")}
 
-  #This crazy thing so if rename is run multiple times names dont get messed up.
+  #This snippet of code prevents loss of files if rename is run multiple times.
   for (t in 1:length(file_list)) {
     file.rename(from = file_list[t], to = paste("mxc run_", (length(file_list)+t), ".csv", sep = ""))
   }
 
   file_list <- list.files(pattern = ".csv$")
 
-  #Here lets use a for loop to rename everything in the folder
+  #Use a for loop to rename file to the names we want.
   for (t in 1:length(file_list)) {
     file.rename(file_list[t], paste("mxc run_", t, ".csv", sep = ""))
   }

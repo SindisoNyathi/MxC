@@ -38,7 +38,7 @@ mxc_master <- function(folderwithrawrun) {
 
 
   #Step 1: Run the untar file if neccesary.
-  #mxc_untar(folderwithrawrun)
+  mxc_untar(home, folderwithrawrun)
 
   #Step 2.
   #Runs the formatting file first. Only run if the files are in one big file.

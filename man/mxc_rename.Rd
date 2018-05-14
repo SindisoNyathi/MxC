@@ -18,15 +18,15 @@ Nothing. Just files in Folder foldername renamed.
 This function will rename all the runs in the Experiment Folder specified.
 }
 \details{
-Method: This function will take the names of all hte runs in foldername and rename them from whatever their original names are
-to mxxc_run1.csv, mxc_run2.csv, mxc_run3.csv, etc.
+Method: This function will take the names of all the runs in foldername and rename them from whatever their original names are
+to mxc_run1.csv, mxc_run2.csv, mxc_run3.csv, etc.
 }
 \examples{
 mxc_rename(home, "Baseline")
 mxc_master(home, "Intervention 1")
 }
 \seealso{
-{\code{\link{mxc_mulruns}}, \code{\link{mxc_master}}}
+{\code{\link{mxc_mulruns}}, \code{\link{mxc_master}}, \code{\link{mxc_untar}}}
 }
 \author{
 Sindiso Nyathi
