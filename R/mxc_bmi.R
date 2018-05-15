@@ -25,7 +25,7 @@ mxc_bmi <- function(home, filename) {
   setwd(paste(home, filename, "/", sep = ""))
 
   #Set the constants. Run is the number of runs in the folder.
-  run =  length(list.files(pattern = "mxc$"))
+  run =  length(list.files(pattern = "^mxc "))
   sim =  5 #In years.
 
   #Create the dataframe that you will store the results in.
