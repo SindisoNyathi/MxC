@@ -322,6 +322,9 @@ mxc_indrun <- function(home, results, run_number, filename, simulation_length)
   #Use apply to give us row means for Low Int. High, for male and female
   r_form[9, 3:12] = apply(r_form[c(1:6), c(3:12)], 2, mean)
 
+  #Write hte output summary file.
+  write.csv(r_form, paste("mxc_output run_", run_number, ".csv", sep = ""))
+
   #Return r_form for further processing.
   return(r_form)
 
