@@ -34,11 +34,11 @@ mxc_bmiindsd <- function(age_run){
 
   #Prop overweight and obese. Overweight 85th to 95th Percentile, Obese over 95th percentiles.
   #Raw numbers.
-  ow_S <- nrow(filter(age_run, perc_S >= 0.85, perc_S < 0.95))
-  ow_E <- nrow(filter(age_run, perc_E >= 0.85, perc_E < 0.95))
+  ow_S <- nrow(dplyr::filter(age_run, perc_S >= 0.85, perc_S < 0.95))
+  ow_E <- nrow(dplyr::filter(age_run, perc_E >= 0.85, perc_E < 0.95))
 
-  ob_S <- nrow(filter(age_run, perc_S >= 0.95))
-  ob_E <- nrow(filter(age_run, perc_E >= 0.95))
+  ob_S <- nrow(dplyr::filter(age_run, perc_S >= 0.95))
+  ob_E <- nrow(dplyr::filter(age_run, perc_E >= 0.95))
 
   #Proportions, using the n above.
   p_ow_S = (ow_S/n_all)*100
