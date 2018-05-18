@@ -80,6 +80,9 @@ mxc_trend <- function(home, filename){
       final_trend[j, c(2:62)] <- ((final_trend[j, c(2:62)])*(i -  1))
       final_trend[j, c(2:62)] <- (final_trend[j, c(2:62)] + all_mean[j,])/i
     }
+
+    #Write the file. Change it to replace the original file to save space
+    file.remove(paste("mxc run_", i, ".csv", sep = ""))
   }
 
   #Now save tfe BMI trend file.

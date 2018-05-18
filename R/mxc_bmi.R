@@ -224,8 +224,6 @@ mxc_bmi <- function(home, filename) {
     mulrunsSD[i, 1] = i
     mulrunsSD[i, c(2:145)] = as.data.frame(runs_outputSD)
 
-    #Write the file. Change it to replace the original file to save space
-    file.remove(paste("mxc run_", i, ".csv", sep = ""))
   }
 
   #Create the summary dataframe and use that.
