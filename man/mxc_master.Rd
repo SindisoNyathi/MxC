@@ -10,26 +10,29 @@ mxc_master(folderwithrawrun)
 \item{name}{String name of file with the runs eg. "Baseline"}
 }
 \value{
-Will write multiple csv files into the Folders with the experiments.
+Will write multiple .csv files into the Folders with the experiments. This package will also delete the
+original files. Ensure that if you want to run the csvs again you keep copies of the files in seperate folders.
 }
 \description{
 This function will run the entire Mexico City Data Analysis and write results.
 }
 \details{
 Your current working directory should contain Folders of all the Experiments you would
-like to analyse. This functions is very space consuming.
-
+like to analyse.
 Method: This function has multiple steps, depending on the specifications. It will call multiple other functions to carry out these steps.
        Step 1: Set the home directory as the current working directory
-       Step 2: Rename the individual run files for clarity. Runs will be named "mxc_run1.csv" to "mxc_runX.csv".
+       Step 2: If the files are zipped unzip them.
+       Step 3: Rename the individual run files for clarity. Runs will be named "mxc_run1.csv" to "mxc_runX.csv".
        Step 3: Call the mulruns function, which will  process the individual runs, average the results accross all runs
-       and save the results file for PA times, and events.
+               and save the results file for PA times, and events.
        Step 4: Call mxc_bmi which will similarly deal with the BMI processing, and save those relevant output files.
        Step 5: Finally run the BMI trend function which will plot and write BMI trajectory over five years.
+       Step 6: At the end, delete all the original files in order to save space.
 
 Assumptions this file makes.
 That there are 218164 adolescents in each run.
 That each run was conducted for 5 years.
+Currently the functions do not check for variable availabiltity, so assumes all the variabel columns are present.
 mxc_master()
 }
 \examples{
@@ -37,7 +40,7 @@ mxc_master("Baseline")
 mxc_master("Intervention 1")
 }
 \seealso{
-{\code{\link{mxc_mulruns}}}
+{\code{\link{mxc_mulruns}}, \code{\link{mxc_bmi}}}
 }
 \author{
 Sindiso Nyathi
