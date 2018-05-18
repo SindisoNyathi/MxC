@@ -30,19 +30,21 @@ mxc_plot <- function(home, filename){
 
   #Create the plots.
   plot_trend <-  ggplot2::ggplot(trends, ggplot2::aes(x = ((Time*25)/30), y = BMI, color = Scenario)) +
-    geom_line(size = 1) +
-    theme_solarized() +
-    theme(title = element_text(color = "gray0"), panel.background = element_rect(fill = 'snow'), plot.background = element_rect("white"),
+    ggplot2::geom_line(size = 1) +
+    ggthemes::theme_solarized() +
+    ggplot2::theme(title = element_text(color = "gray0"), panel.background = element_rect(fill = 'snow'),
+                   plot.background = element_rect("white"),
           legend.background = element_rect("white"), legend.text = element_text(color = "gray0"),
           legend.title = element_text(color = "gray0")) +
     #scale_size_manual(values = c(0.1, 0.1, 0.1, 1)) +
     #geom_point() +
-    ggtitle("Mexico City Experiments.\nBMI Trajectory") +
-    ylim(18, 25) + #theme_gdocs() +
-    theme(plot.title = element_text(hjust = 0.5), legend.position = "right") +
-    scale_color_manual(values = c("chartreuse", "blue", "gray0", "red")) +
-    scale_x_continuous(breaks = seq(0, 60, 6)) +
-    xlab("Time (months)") + ylab("BMI (kg/m^2)") # labs(color = "Scenario")# +
+    ggplot2::ggtitle("Mexico City Experiments.\nBMI Trajectory") +
+    ggplot2::ylim(18, 25) + #theme_gdocs() +
+    ggplot2::theme(plot.title = element_text(hjust = 0.5), legend.position = "right") +
+    ggplot2::scale_color_manual(values = c("chartreuse", "blue", "gray0", "red")) +
+    ggplot2::scale_x_continuous(breaks = seq(0, 60, 6)) +
+    ggplot2::xlab("Time (months)") +
+    ggplot2::ylab("BMI (kg/m^2)") # labs(color = "Scenario")# +
   #geom_errorbar(lims, width = 1, position = "dodge")
 
   #Plot and save the image.
