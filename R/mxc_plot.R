@@ -29,7 +29,7 @@ mxc_plot <- function(home, filename){
   names(trends) <- c("Time", "Scenario", "BMI")
 
   #Create the plots.
-  plot_trend <-  ggplot2::ggplot(trends, aes(x = ((Time*25)/30), y = BMI, color = Scenario)) +
+  plot_trend <-  ggplot2::ggplot(trends, ggplot2::aes(x = ((Time*25)/30), y = BMI, color = Scenario)) +
     geom_line(size = 1) +
     theme_solarized() +
     theme(title = element_text(color = "gray0"), panel.background = element_rect(fill = 'snow'), plot.background = element_rect("white"),
