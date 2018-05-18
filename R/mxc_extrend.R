@@ -56,7 +56,7 @@ mxc_extrend <- function(home, filename){
   }
 
   #Find the mean of all the runs. Transpose it and make it into a dataframe.
-  runs_mean <- apply(final_trend, 2, mean) %<% as.data.frame
+  runs_mean <- as.data.frame(apply(final_trend, 2, mean))
 
   #Set the name of the column to the current experiment.
   names(runs_mean) <- filename
