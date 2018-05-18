@@ -47,13 +47,15 @@ mxc_master <- function(folderwithrawrun) {
   #Then Run the aggregator file that aggregates all the runs in the Physical Activity numbers.
   mxc_mulruns(home, folderwithrawrun)
 
-  #Run the BMI file.
+
+  #Step 4:Run the BMI file.
   mxc_bmi(home, folderwithrawrun)
 
-  #Create and plot the BMI trend. Save them and delete all original files at the end.
-  bmi_trend(home, folderwithrawrun)
+  #Step 5:Create and plot the BMI trend. Save them and delete all original files at the end.
+  mxc_extrend(home, folderwithrawrun)
+  mxc_plot(home, folderwithrawrun)
 
-  #MAke sure the directory to the original.
+  #Meke sure the directory to the original.
   on.exit(setwd(this_dir))
 
   #Print progress statement.
