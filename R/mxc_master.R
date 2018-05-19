@@ -38,21 +38,21 @@ mxc_master <- function(folderwithrawrun) {
   home <- paste(this_dir, "/", sep = "") #This will allow us to simply append the folder name of any run and work in that folder.
 
   #Step 1: Run the untar file to unzip the files, if they are zipped. IF they are already unzipped this file will do nothing.
-  #mxc_untar(home, folderwithrawrun)
+  mxc_untar(home, folderwithrawrun)
 
   #Step 2: Rename the files for consistency.
-  #mxc_rename(home, folderwithrawrun)
+  mxc_rename(home, folderwithrawrun)
 
   #Step 3.
   #Then Run the aggregator file that aggregates all the runs in the Physical Activity numbers.
-  #mxc_mulruns(home, folderwithrawrun)
+  mxc_mulruns(home, folderwithrawrun)
 
 
   #Step 4:Run the BMI file.
-  #mxc_bmi(home, folderwithrawrun)
+  mxc_bmi(home, folderwithrawrun)
 
   #Step 5:Create and plot the BMI trend. Save them and delete all original files at the end.
-  #mxc_extrend(home, folderwithrawrun)
+  mxc_extrend(home, folderwithrawrun)
   mxc_plot(home, folderwithrawrun)
 
   #Meke sure the directory to the original.

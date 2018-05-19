@@ -10,5 +10,5 @@ License:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Imports: dplyr, ggplot2, Rmisc, stats
+Imports: dplyr, ggplot2, Rmisc, stats, ggthemes
   
