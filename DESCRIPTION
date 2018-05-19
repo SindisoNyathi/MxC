@@ -1,12 +1,14 @@
 Package: MxC
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Processes the entire set of Mexico City Results from VPOP.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Sindiso Nyathi
+Maintainer: Sindiso Nyathi <snyathi1@jhu.edu>
+Description: Summarises the MexicoCity results and saves the files, as well as the 
+    BMI plots.
+License: 
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Imports: dplyr, ggplot2, Rmisc, stats
+  

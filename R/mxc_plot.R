@@ -11,6 +11,8 @@
 #'mxc_plot(home, "Intervention 1")
 #'@family
 #'
+#'@import ggplot2
+#'
 #' @export
 
 mxc_plot <- function(home, filename){
