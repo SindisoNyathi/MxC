@@ -29,7 +29,7 @@ mxc_plot <- function(home, filename){
   names(trends)[1] <- "Time"
 
   #Reshape the file.
-  trends <- melt(trends, id.vars = "Time")
+  trends <- reshape2::melt(trends, id.vars = "Time")
   names(trends) <- c("Time", "Scenario", "BMI")
 
   #Create the plots.
