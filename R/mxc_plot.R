@@ -11,9 +11,11 @@
 #'mxc_plot(home, "Intervention 1")
 #'@family
 #'
-#'@import ggplot2
+#'@import dplyr, ggplot2, ggthemes,
 #'
 #' @export
+
+
 
 mxc_plot <- function(home, filename){
 
@@ -43,7 +45,7 @@ mxc_plot <- function(home, filename){
     ggplot2::ggtitle("Mexico City Experiments.\nBMI Trajectory") +
     ggplot2::ylim(18, 25) + #theme_gdocs() +
     ggplot2::theme(plot.title = element_text(hjust = 0.5), legend.position = "right") +
-    ggplot2::scale_color_manual(values = c("chartreuse", "blue", "gray0", "red")) +
+    ggplot2::scale_color_manual(values = c("chartreuse", "blue", "gray0", "red", "slateblue")) +
     ggplot2::scale_x_continuous(breaks = seq(0, 60, 6)) +
     ggplot2::xlab("Time (months)") +
     ggplot2::ylab("BMI (kg/m^2)") # labs(color = "Scenario")# +
