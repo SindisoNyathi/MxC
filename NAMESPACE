@@ -1,2 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-import(ggplot2, Rmisc, dplyr, stats, ggthemes)
+import(dplyr, ggplot2, ggthemes, Rmisc, stats)

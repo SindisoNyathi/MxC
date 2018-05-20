@@ -1,14 +1,20 @@
-Package: MxC
+Package: MxC (Mexico City)
 Type: Package
-Title: Processes the entire set of Mexico City Results from VPOP.
+Title: Processes the entire set of Mexico City Results from the VPOP model.
 Version: 0.1.0
 Author: Sindiso Nyathi
 Maintainer: Sindiso Nyathi <snyathi1@jhu.edu>
-Description: Summarises the MexicoCity results and saves the files, as well as the 
-    BMI plots.
-License: 
+Description: Summarises the Mexico City results and saves the files, as well as the 
+    BMI plots. For the given Experiment folder, the package will read in each run of the experiment
+    and calculate the averages and groupings required (e.g. %age of people overweight, % of 6 - 9yr olds
+    with 0 - 3hrs of exercise per week)
+License: NA
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Imports: dplyr, ggplot2, Rmisc, stats, ggthemes
+Imports:  dplyr (>= 0.7.4),
+          ggplot2 (>= 2.2.1), 
+          ggthemes (>= 3.5.0),
+          Rmisc (>= 1.5), 
+          stats (>= 3.4.3)
   
