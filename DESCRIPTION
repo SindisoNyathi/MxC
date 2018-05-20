@@ -1,6 +1,6 @@
 Package: MxC (Mexico City)
 Type: Package
-Title: Processes the entire set of Mexico City Results from the VPOP model.
+Title: Processes the entire set of Mexico City Results.
 Version: 0.1.0
 Author: Sindiso Nyathi
 Maintainer: Sindiso Nyathi <snyathi1@jhu.edu>
