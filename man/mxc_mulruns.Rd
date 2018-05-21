@@ -18,15 +18,13 @@ Will write multiple csv files into the Folders with the experiments.
 This function will process all the runs in a single experiment given the folder name, and write results to .csv files.
 }
 \details{
-This function will aggregate each run into age and gender groupings, find the averages for the Time and Events variables in each run
-and average these out accross all the runs.
-Method:As Follows
+This function will aggregate each run into age and gender groupings, find the averages for the Time and
+Events variables in each run and average these out across all the runs. Method is as follows:
      Step 1: Create a dataframe to store all the group average values.
-     Step 2: Run a for loop from 1 to x (x is the number of runs in this experiment)
-              2a: Call mxc_indrun, which will calculate individual run averages for all the variables.
+     Step 2: Run a for loop from 1 to N (N is the number of runs in this experiment)
+              2a: Call mxc_indrun, which will calculate individual run averages for all the variables in run N.
               2b: Store the resulting values in the data frame created.
       Step 3: Calculate the overall means, SD and CI accross all the x runs.
-mxc_mulruns()
 }
 \examples{
 mxc_mulruns(home, "Baseline")

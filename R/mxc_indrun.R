@@ -1,22 +1,22 @@
 #' @title MxC Indrun
 #' @author Sindiso Nyathi
-#' @description This  function will read in a single run and group adolescents by gender and age find variable averages
+#' @description This function will read in a single run and group adolescents by gender and age, and find variable averages
 #' @param  home Parent directory path.
 #' @param  results The run .csv file with the adolescents.
 #' @param  run_number The run number.
 #' @param  filename String name of file with the runs eg. "Baseline"
-#' @param  simulation_length Length of th eSimulation
+#' @param  simulation_length Length of the simulation
 #' @return A file formatted, with required groupings and ages for the variables of interest.
 #' @details This function will aggregate a run into age and gender groupings, find the averages for
-#' the Time and Events variables.
-#' Method:As Follows
-
+#' the Time and Events variables.This is done by taking the variable values for each gender/age grouping
+#' and finding the means, for each of these. The Gender age groupings processed are m6-9yrs, f6 - 9yrs, m10-15yrs, f10-15yrs,
+#' m15-18yrs, f15-18yrs, as well as male overall, and female overall and all overall.
 #'
-#'@seealso {\code{\link{mxc_master}}, \code{\link{mxc_mulruns}}, \code{\link{mxc_dealsd}}}
-#'@examples
-#'mxc_indrun(home, mxc_run2.csv, 2, "Baseline", 5)
-#'mxc_indrun(home, mxc_run34.csv, 34, "Intervention 1", 5)
-#'@family
+#' @seealso {\code{\link{mxc_master}}, \code{\link{mxc_mulruns}}, \code{\link{mxc_dealsd}}}
+#' @examples
+#' mxc_indrun(home, mxc_run2.csv, 2, "Baseline", 5)
+#' mxc_indrun(home, mxc_run34.csv, 34, "Intervention 1", 5)
+#' @family
 #'
 #' @export
 
@@ -24,37 +24,52 @@
 mxc_indrun <- function(home, results, run_number, filename, simulation_length)
 {
 
-  #Run Number is run_number, i.e. in a set of 12 runs total, this could be the 5th or 7th run. That is rn.
-  #filename is the Run Set file we are storing the output in. Each set of runs has its own file to avoid mixing,
+  #Run Number is run_number, i.e. in a set of 12 runs total, this could be the 5th or 7th run. That is run number.
+  #"filename" is the Run Set file we are storing the output in. Each set of runs has its own file to avoid mixing,
   #.e. the 50 runs for baseline, the 50 runs for intervention 1 are in seperate folders.
 
-  #Create the DataFrame we want as an Output. 7 rows, 3 for males, for 3 Age groups, and 3 for females, and 7th row is the totals. r_form = 11 by 9.
-  groups <- 9
-  r_form <- data.frame(Gender = numeric(groups), Age = numeric(groups),
-                       "Ave. No. of events/week" = numeric(groups),
-                       "No. of Events (0 - 3)"   = numeric(groups), "No. of Events (3 - 5)"  = numeric(groups), "No. of Events (5 or more)"    = numeric(groups), #Stores No. of MVPA Events
-                       "Ave. Time in MVPA/week" = numeric(groups), "Ave. PE Time in MVPA/week" = numeric(groups), "Ave. ASPA Time in MVPA/week" = numeric(groups),
-                       "Time in MVPA (0 - 3hrs)" = numeric(groups),"Time in MVPA (3 - 7hrs)" = numeric(groups), "Time in MVPA (7 or more hrs)" = numeric(groups), #Stores Time in MVPA
-                       "Sample Size" = numeric(groups)) #Stores the N's as a check these should always add up to nrow in the file.
+  #Create the DataFrame we want as an Output. 9 rows, 3 for the 3 male age groups, and 3 for female age groups, 1 for overall
+  #male, 1 for overall female and 1 for all adolescents, so 9 rows in total. We are interested in 11 values overall. So the dataframe
+  #will be a 9 by 11 dataframe.
 
-  #Number of Adolescents in the run.
+  #Groups is the number of rows.
+  groups <- 9
+
+  #Create the dataframe with the specified columns.
+  r_form <- data.frame(Gender = numeric(groups), Age = numeric(groups),
+
+                       #Stores No. of MVPA Events
+                       "Ave. No. of events/week" = numeric(groups),
+                       "No. of Events (0 - 3)"   = numeric(groups), "No. of Events (3 - 5)"  = numeric(groups), "No. of Events (5 or more)"    = numeric(groups),
+
+                       #Stores Time in MVPA variables.
+                       "Ave. Time in MVPA/week" = numeric(groups), "Ave. PE Time in MVPA/week" = numeric(groups), "Ave. ASPA Time in MVPA/week" = numeric(groups),
+                       "Time in MVPA (0 - 3hrs)" = numeric(groups),"Time in MVPA (3 - 7hrs)" = numeric(groups), "Time in MVPA (7 or more hrs)" = numeric(groups),
+
+                       #Stores the N's as a check these should always add up to nrow in the file.
+                       "Sample Size" = numeric(groups))
+
+  #Retrieve the number of adolescents in the run and set simulation length to sim.
   agents_n = nrow(results)
   sim = simulation_length
 
   #Get the age variable
   results$age = results$initial_age
 
-  #No. of weeks in simulation.
-  weeks = (sim*365)/7 # we could have input sim in days but the fewer numbers the better.
+  #Get the number of weeks in the simulation. Most of the groupings will be by week, e.g. No. of MVPA events per week or Time in MVPA per week.
+  weeks = (sim*365)/7
 
   #Add columns with the Times and Events per week.
   results['Total Events'] = (results$total_times_exercised)/weeks #The number of weeks in the simulation, ave events per week for each agent
-  results$'Total Events'[results$age == 15] = (results$total_times_exercised)[results$age == 15]/((sim-1)*(365/7)) #Deal with the wholse sim length thing.
+
+  #The value calculated in the previous statement will not be correct for all adolescents. Correct for the length of time
+  #an adolescent is in the model.
+  results$'Total Events'[results$age == 15] = (results$total_times_exercised)[results$age == 15]/((sim-1)*(365/7))
   results$'Total Events'[results$age == 16] = (results$total_times_exercised)[results$age == 16]/((sim-2)*(365/7))
   results$'Total Events'[results$age == 17] = (results$total_times_exercised)[results$age == 17]/((sim-3)*(365/7))
   results$'Total Events'[results$age == 18] = (results$total_times_exercised)[results$age == 18]/((sim-4)*(365/7))
 
-  #The file is in minutes, change it to hours per week.
+  #Calculate the Time spent in MVPA per week in hours, by adding PE time and ASPA time and dividing by 60 to get time in hours.
   results['Total Time'] = ((results$average_pe_minutes_per_day + results$average_aspa_minutes_per_day)*7)/60
 
   #For each Gender and Age Calculate the N (no. of agents) and percentage.
@@ -120,7 +135,7 @@ mxc_indrun <- function(home, results, run_number, filename, simulation_length)
 
 
   #Now add these values to the Table as percentages.
-  #Start with Generic Ages and Genders.
+  #Start with Generic Ages and Genders. Fill the columns.
   r_form$Gender[1:3] = 'MALE'
   r_form$Gender[4:6] = 'FEMALE'
   r_form$Gender[7] = 'MALE'
@@ -322,10 +337,9 @@ mxc_indrun <- function(home, results, run_number, filename, simulation_length)
   #Use apply to give us row means for Low Int. High, for male and female
   r_form[9, 3:12] = apply(r_form[c(1:6), c(3:12)], 2, mean)
 
-  #Write hte output summary file.
+  #Write the output summary file.
   write.csv(r_form, paste("output run_", run_number, ".csv", sep = ""))
 
   #Return r_form for further processing.
   return(r_form)
-
 }

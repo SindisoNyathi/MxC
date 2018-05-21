@@ -12,15 +12,15 @@ mxc_untar(home, foldername)
 \item{foldername}{String name of file with the runs eg. "Baseline"}
 }
 \value{
-For N runs originally tar files, will return N files as .csv files.
+For N runs originally  in .tar or .gz format, will return N files as .csv files.
 }
 \description{
-This function will convert all the files in the run folder from .tar files to .csv files.
-The function will not function (lol) if the files are compressed into any other format. It will only
-work with .tar files.
+This function will convert all the files in the run folder from .gz or .tar files to .csv files.
+The function will not function if the files are compressed into any other format. It will only
+work with .tar or .gz files.
 }
 \details{
-Method: This function reads in each .tar file and converts it to a .csv file and saves the ouput
+Method: This function reads in each .tar or .gz file, converts it to a .csv file and saves the ouput
 to the current folder.
 }
 \examples{

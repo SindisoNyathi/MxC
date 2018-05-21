@@ -9,17 +9,17 @@ mxc_rename(home, foldername)
 \arguments{
 \item{home}{Parent directory with all the experiments.}
 
-\item{foldername}{String name of file with the runs eg. "Baseline"}
+\item{foldername}{String name of folder with the runs eg. "Baseline"}
 }
 \value{
-Nothing. Just files in Folder foldername renamed.
+Nothing. Will rename the files in the folder.
 }
 \description{
 This function will rename all the runs in the Experiment Folder specified.
 }
 \details{
 Method: This function will take the names of all the runs in foldername and rename them from whatever their original names are
-to mxc_run1.csv, mxc_run2.csv, mxc_run3.csv, etc.
+to mxc run_1.csv, mxc run_2.csv, mxc run_3.csv, . . . , mxc run_N.csv.
 }
 \examples{
 mxc_rename(home, "Baseline")

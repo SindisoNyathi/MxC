@@ -7,32 +7,31 @@
 mxc_master(folderwithrawrun)
 }
 \arguments{
-\item{name}{String name of file with the runs eg. "Baseline"}
+\item{name}{String name of folder with the runs eg. "Baseline"}
 }
 \value{
 Will write multiple .csv files into the Folders with the experiments. This package will also delete the
-original files. Ensure that if you want to run the csvs again you keep copies of the files in seperate folders.
+original files. Ensure that if you want to run the .csvs again you keep copies of the files in seperate folders.
 }
 \description{
-This function will run the entire Mexico City Data Analysis and write results.
+This function will run the entire Mexico City Data Analysis and write the results.
 }
 \details{
 Your current working directory should contain Folders of all the Experiments you would
-like to analyse.
-Method: This function has multiple steps, depending on the specifications. It will call multiple other functions to carry out these steps.
-       Step 1: Set the home directory as the current working directory
-       Step 2: If the files are zipped unzip them.
-       Step 3: Rename the individual run files for clarity. Runs will be named "mxc_run1.csv" to "mxc_runX.csv".
+like to analyse.\n
+Method: This function has multiple steps, depending on the specifications. It will call several other functions
+to carry out these steps in the following order.\n
+       Step 1: If the files are zipped, unzip them.\n
+       Step 2: Rename the individual run files for clarity. Runs will be named "mxc run_1.csv" to "mxc run_N.csv" for N individual runs.
        Step 3: Call the mulruns function, which will  process the individual runs, average the results accross all runs
-               and save the results file for PA times, and events.
-       Step 4: Call mxc_bmi which will similarly deal with the BMI processing, and save those relevant output files.
-       Step 5: Finally run the BMI trend function which will plot and write BMI trajectory over five years.
-       Step 6: At the end, delete all the original files in order to save space.
-
-Assumptions this file makes.
-That there are 218164 adolescents in each run.
-That each run was conducted for 5 years.
-Currently the functions do not check for variable availabiltity, so assumes all the variabel columns are present.
+               and save the results file for physical activity times, and events.\n
+       Step 4: Call the mxc_bmi function which will similarly deal with the BMI processing, and save the relevant output files.\n
+       Step 5: Run the mxc_extrend function which will write BMI trajectory over five years and delete the original run files.\n
+       Step 6: Run the mxc_plot function, which will plot the BMI trends for the 5yr runs.\n
+\n
+Assumptions this function makes.\n
+=> This function assumes that there are 218 164 adolescents in each run.
+=> This function assumed that each run was conducted for 5 years.
 mxc_master()
 }
 \examples{
@@ -40,7 +39,7 @@ mxc_master("Baseline")
 mxc_master("Intervention 1")
 }
 \seealso{
-{\code{\link{mxc_mulruns}}, \code{\link{mxc_bmi}}}
+{\code{\link{mxc_mulruns}}, \code{\link{mxc_bmi}}, \code{\link{mxc_extrend}}}
 }
 \author{
 Sindiso Nyathi

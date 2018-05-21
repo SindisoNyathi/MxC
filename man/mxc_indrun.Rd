@@ -15,18 +15,19 @@ mxc_indrun(home, results, run_number, filename, simulation_length)
 
 \item{filename}{String name of file with the runs eg. "Baseline"}
 
-\item{simulation_length}{Length of th eSimulation}
+\item{simulation_length}{Length of the simulation}
 }
 \value{
 A file formatted, with required groupings and ages for the variables of interest.
 }
 \description{
-This  function will read in a single run and group adolescents by gender and age find variable averages
+This function will read in a single run and group adolescents by gender and age, and find variable averages
 }
 \details{
 This function will aggregate a run into age and gender groupings, find the averages for
-the Time and Events variables.
-Method:As Follows
+the Time and Events variables.This is done by taking the variable values for each gender/age grouping
+and finding the means, for each of these. The Gender age groupings processed are m6-9yrs, f6 - 9yrs, m10-15yrs, f10-15yrs,
+m15-18yrs, f15-18yrs, as well as male overall, and female overall and all overall.
 }
 \examples{
 mxc_indrun(home, mxc_run2.csv, 2, "Baseline", 5)
